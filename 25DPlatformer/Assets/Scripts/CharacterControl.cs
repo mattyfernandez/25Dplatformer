@@ -13,6 +13,7 @@ namespace platformer
     {
         public float speed;
         public Animator animator;
+        public Material material;
         void Update()
         {
             if(VirtualInputManager.Instance.MoveRight && VirtualInputManager.Instance.MoveLeft)
@@ -38,6 +39,25 @@ namespace platformer
                 this.gameObject.transform.Translate(Vector3.forward * speed * Time.deltaTime);
                 this.gameObject.transform.rotation = Quaternion.Euler(0f, -180f, 0f);
                 animator.SetBool(TransitionParameter.Move.ToString(), true);
+            }
+        }
+
+        public void ChangeMaterial()
+        {
+            if (material == null)
+            {
+                Debug.LogError("No Material Specify.");
+            }
+
+            Renderer[] arrMaterials = this.gameObject.GetComponentsInChildren<Renderer>();
+
+            foreach(Renderer r in arrMaterials)
+            {
+                if(r.gameObject != this.gameObject)
+                {
+
+                    r.material = material;
+                }
             }
         }
     }
