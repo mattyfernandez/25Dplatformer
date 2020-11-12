@@ -7,7 +7,9 @@ namespace platformer
     [CreateAssetMenu(fileName = "New State", menuName = "MyAssets/AbilityData/MoveFoward")]
     public class MoveFoward : StateData
     {
+        public AnimationCurve SpeedGraph;
         public float Speed;
+        public float BlockDistance;
 
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
@@ -17,6 +19,11 @@ namespace platformer
         {
 
             CharacterControl control = characterState.GetCharacterControl(animator);
+
+            if (control.Jump)
+            {
+                animator.SetBool(TransitionParameter.Jump.ToString(), true);
+            }
 
             if (control.MoveRight && control.MoveLeft)
             {
@@ -32,19 +39,40 @@ namespace platformer
 
             if (control.MoveRight)
             {
-                control.transform.Translate(Vector3.forward * Speed * Time.deltaTime);
-                control.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                if (!CheckFront(control))
+                {
+                    control.transform.Translate(Vector3.forward * Speed * SpeedGraph.Evaluate(stateInfo.normalizedTime) * Time.deltaTime);
+                    control.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                }
             }
 
             if (control.MoveLeft)
             {
-                control.transform.Translate(Vector3.forward * Speed * Time.deltaTime);
-                control.transform.rotation = Quaternion.Euler(0f, -180f, 0f);
+                if (!CheckFront(control))
+                {    
+                    control.transform.Translate(Vector3.forward * Speed * SpeedGraph.Evaluate(stateInfo.normalizedTime) * Time.deltaTime);
+                    control.transform.rotation = Quaternion.Euler(0f, -180f, 0f);
+                }
             }
         }
         public override void OnExit(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
 
+        }
+
+        bool CheckFront(CharacterControl control)
+        {
+            foreach (GameObject o in control.FrontSpheres)
+            {
+                Debug.DrawRay(o.transform.position, control.transform.forward * 0.3f, Color.yellow);
+                RaycastHit hit;
+                if (Physics.Raycast(o.transform.position, control.transform.forward, out hit, BlockDistance))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 
