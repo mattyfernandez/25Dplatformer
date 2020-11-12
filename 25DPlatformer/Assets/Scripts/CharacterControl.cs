@@ -7,6 +7,8 @@ namespace platformer
     public enum TransitionParameter
     {
         Move,
+        Jump,
+        ForceTransition,
     }
 
     public class CharacterControl : MonoBehaviour
@@ -16,6 +18,7 @@ namespace platformer
         public Material material;
         public bool MoveRight;
         public bool MoveLeft;
+        public bool Jump;
 
         public void ChangeMaterial()
         {
