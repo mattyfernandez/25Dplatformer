@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3999190555704592192}
   - component: {fileID: 3999190555704592196}
   - component: {fileID: 602115501}
+  - component: {fileID: 1081220064}
   m_Layer: 0
   m_Name: FemaleMC
   m_TagString: Untagged
@@ -94,8 +95,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1.8030615, z: 0.37656608}
+  m_Center: {x: 0, y: 0.88638973, z: 0.019219413}
 --- !u!114 &3999190555704592196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,6 +115,9 @@ MonoBehaviour:
     type: 3}
   MoveRight: 0
   MoveLeft: 0
+  Jump: 0
+  ColliderEdgePrefab: {fileID: 4041142938949877505, guid: e55e0a3acc929134aae5493d951c9188,
+    type: 3}
 --- !u!114 &602115501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,6 +130,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f050d3fc963723409905076d9780b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &1081220064
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3999190555704592223}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &6563653667545534872
 PrefabInstance:
   m_ObjectHideFlags: 0
