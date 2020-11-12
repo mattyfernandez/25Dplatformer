@@ -11,9 +11,11 @@ namespace platformer
 
     public class CharacterControl : MonoBehaviour
     {
-        public float speed;
+        public float Speed;
         public Animator animator;
         public Material material;
+        public bool MoveRight;
+        public bool MoveLeft;
 
         public void ChangeMaterial()
         {

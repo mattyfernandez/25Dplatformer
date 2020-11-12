@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3999190555704592193}
   - component: {fileID: 3999190555704592192}
   - component: {fileID: 3999190555704592196}
+  - component: {fileID: 602115501}
   m_Layer: 0
   m_Name: FemaleMC
   m_TagString: Untagged
@@ -50,7 +51,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3999190555704592223}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -107,7 +108,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6a827e7ebb764b4aa3660d1dddd8a9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
+  Speed: 0
+  animator: {fileID: 755581735671786505}
+  material: {fileID: 2541457280464432744, guid: 661b6c02aa8e55f4abea372c632c07de,
+    type: 3}
+  MoveRight: 0
+  MoveLeft: 0
+--- !u!114 &602115501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3999190555704592223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f050d3fc963723409905076d9780b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6563653667545534872
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -175,11 +193,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: xbot
       objectReference: {fileID: 0}
+    - target: {fileID: 3853268898807207900, guid: 661b6c02aa8e55f4abea372c632c07de,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2541457280464432744, guid: 661b6c02aa8e55f4abea372c632c07de,
+        type: 3}
+    - target: {fileID: 5866666021909216657, guid: 661b6c02aa8e55f4abea372c632c07de,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 3be4104eb40af11428f5b8ac93e9785f, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 661b6c02aa8e55f4abea372c632c07de,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 661b6c02aa8e55f4abea372c632c07de, type: 3}
 --- !u!4 &6673333273386595955 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 661b6c02aa8e55f4abea372c632c07de,
+    type: 3}
+  m_PrefabInstance: {fileID: 6563653667545534872}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &755581735671786505 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 661b6c02aa8e55f4abea372c632c07de,
     type: 3}
   m_PrefabInstance: {fileID: 6563653667545534872}
   m_PrefabAsset: {fileID: 0}
