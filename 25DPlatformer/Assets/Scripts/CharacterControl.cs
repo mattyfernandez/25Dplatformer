@@ -22,6 +22,7 @@ namespace platformer
         public GameObject ColliderEdgePrefab;
         public List<GameObject> BottomSpheres = new List<GameObject>();
         public List<GameObject> FrontSpheres = new List<GameObject>();
+        public List<Collider> RagdollParts = new List<Collider>();
 
         public float GravityMulplier;
         public float PullMultiplier;
@@ -40,6 +41,49 @@ namespace platformer
         }
 
         private void Awake()
+        {
+            SetRagdollParts();
+            SetColiiderSpheres();
+        }
+
+        /*private IEnumerator Start()
+        {
+            yield return new WaitForSeconds(5f);
+            RIGID_BODY.AddForce(200f * Vector3.up);
+            yield return new WaitForSeconds(0.5f);
+            TurnOnRagDoll();
+        }*/
+
+        private void SetRagdollParts()
+        {
+            Collider[] colliders = this.gameObject.GetComponentsInChildren<Collider>();
+
+            foreach(Collider c in colliders)
+            {
+                if (c.gameObject != this.gameObject)
+                {
+                    c.isTrigger = true;
+                    RagdollParts.Add(c);
+                }
+            }
+        }
+
+        private void TurnOnRagDoll()
+        {
+            RIGID_BODY.useGravity = false;
+            RIGID_BODY.velocity = Vector3.zero;
+            this.gameObject.GetComponent<BoxCollider>().enabled = false;
+            animator.enabled = false;
+            animator.avatar = null;
+
+            foreach(Collider c in RagdollParts)
+            {
+                c.isTrigger = false;
+                c.attachedRigidbody.velocity = Vector3.zero;
+            }
+        }
+
+        private void SetColiiderSpheres()
         {
             BoxCollider box = GetComponent<BoxCollider>();
 
