@@ -10,6 +10,7 @@ namespace platformer
         Jump,
         ForceTransition,
         Grounded,
+        Attack,
     }
 
     public class CharacterControl : MonoBehaviour
@@ -19,6 +20,8 @@ namespace platformer
         public bool MoveRight;
         public bool MoveLeft;
         public bool Jump;
+        public bool Attack;
+
         public GameObject ColliderEdgePrefab;
         public List<GameObject> BottomSpheres = new List<GameObject>();
         public List<GameObject> FrontSpheres = new List<GameObject>();

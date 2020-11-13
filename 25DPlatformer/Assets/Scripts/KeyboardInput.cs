@@ -34,6 +34,15 @@ namespace platformer
             {
                 VirtualInputManager.Instance.Jump = false;
             }
+
+            if (Input.GetKey(KeyCode.Return))
+            {
+                VirtualInputManager.Instance.Attack = true;
+            }
+            else
+            {
+                VirtualInputManager.Instance.Attack = false;
+            }
         }
     }
 }
