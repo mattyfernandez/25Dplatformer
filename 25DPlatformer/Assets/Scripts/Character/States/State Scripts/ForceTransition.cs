@@ -24,6 +24,9 @@ namespace platformer
         public override void OnExit(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
             animator.SetBool(TransitionParameter.ForceTransition.ToString(), false);
+
+            //Attack Animation false... return Idle
+            animator.SetBool(TransitionParameter.Attack.ToString(), false);
         }
     }
 

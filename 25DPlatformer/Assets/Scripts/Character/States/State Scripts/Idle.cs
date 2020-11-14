@@ -14,6 +14,7 @@ namespace platformer
         public override void UpdateAbility(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
             CharacterControl control = characterState.GetCharacterControl(animator);
+
             if (control.Attack)
             {
                 animator.SetBool(TransitionParameter.Attack.ToString(), true);

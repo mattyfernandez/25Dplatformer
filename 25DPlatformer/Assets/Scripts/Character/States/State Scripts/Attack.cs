@@ -18,7 +18,7 @@ namespace platformer
 
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            animator.SetBool(TransitionParameter.Attack.ToString(), true);
+            animator.SetBool(TransitionParameter.Attack.ToString(), false);
 
             GameObject obj = Instantiate(Resources.Load("AttackInfo", typeof(GameObject))) as GameObject;
             AttackInfo info = obj.GetComponent<AttackInfo>();
@@ -77,7 +77,6 @@ namespace platformer
 
         public override void OnExit(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            animator.SetBool(TransitionParameter.Attack.ToString(), false);
             ClearAttack();
         }
 
