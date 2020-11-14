@@ -15,7 +15,7 @@ namespace platformer
 
     public class CharacterControl : MonoBehaviour
     {
-        public Animator animator;
+        public Animator SkinnedMeshAnimator;
         public Material material;
         public bool MoveRight;
         public bool MoveLeft;
@@ -26,6 +26,7 @@ namespace platformer
         public List<GameObject> BottomSpheres = new List<GameObject>();
         public List<GameObject> FrontSpheres = new List<GameObject>();
         public List<Collider> RagdollParts = new List<Collider>();
+        public List<Collider> CollidingParts = new List<Collider>();
 
         public float GravityMulplier;
         public float PullMultiplier;
@@ -45,8 +46,22 @@ namespace platformer
 
         private void Awake()
         {
+            bool SwitchBack = false;
+
+            if (!IsFacingForward())
+            {
+                SwitchBack = true;
+            }
+
+            FaceForward(true);
+
             SetRagdollParts();
             SetColiiderSpheres();
+
+            if (SwitchBack)
+            {
+                FaceForward(false);
+            }
         }
 
         /*private IEnumerator Start()
@@ -56,6 +71,40 @@ namespace platformer
             yield return new WaitForSeconds(0.5f);
             TurnOnRagDoll();
         }*/
+
+        private void OnTriggerEnter(Collider col)
+        {
+            if (RagdollParts.Contains(col))
+            {
+                return;
+            }
+
+            CharacterControl control = col.transform.root.GetComponent<CharacterControl>();
+            
+            if (control == null)
+            {
+                return;
+            }
+
+            if (col.gameObject == control.gameObject)
+            {
+                return;
+            }
+
+            if (!CollidingParts.Contains(col))
+            {
+                CollidingParts.Add(col);
+            }
+
+        }
+
+        private void OnTriggerExit(Collider col)
+        {
+            if (CollidingParts.Contains(col))
+            {
+                CollidingParts.Remove(col);
+            }
+        }
 
         private void SetRagdollParts()
         {
@@ -76,8 +125,8 @@ namespace platformer
             RIGID_BODY.useGravity = false;
             RIGID_BODY.velocity = Vector3.zero;
             this.gameObject.GetComponent<BoxCollider>().enabled = false;
-            animator.enabled = false;
-            animator.avatar = null;
+            SkinnedMeshAnimator.enabled = false;
+            SkinnedMeshAnimator.avatar = null;
 
             foreach(Collider c in RagdollParts)
             {
@@ -163,6 +212,35 @@ namespace platformer
 
                     r.material = material;
                 }
+            }
+        }
+
+        public void MoveFoward(float Speed, float SpeedGraph)
+        {
+            transform.transform.Translate(Vector3.forward * Speed * SpeedGraph * Time.deltaTime);
+        }
+
+        public void FaceForward(bool forward)
+        {
+            if (forward)
+            {
+                transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+            }
+        }
+
+        public bool IsFacingForward()
+        {
+            if(transform.forward.z > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

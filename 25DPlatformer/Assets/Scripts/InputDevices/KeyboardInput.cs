@@ -26,7 +26,7 @@ namespace platformer
                 VirtualInputManager.Instance.MoveLeft = false;
             }
             
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.JoystickButton0))
             {
                 VirtualInputManager.Instance.Jump = true;
             }
@@ -35,7 +35,7 @@ namespace platformer
                 VirtualInputManager.Instance.Jump = false;
             }
 
-            if (Input.GetKey(KeyCode.Return))
+            if (Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.JoystickButton2))
             {
                 VirtualInputManager.Instance.Attack = true;
             }

@@ -44,7 +44,7 @@ namespace platformer
         {
             if (!CheckFront(control))
             {
-                control.transform.Translate(Vector3.forward * Speed * SpeedGraph.Evaluate(stateInfo.normalizedTime) * Time.deltaTime);
+                control.MoveFoward(Speed, SpeedGraph.Evaluate(stateInfo.normalizedTime));
             }
         }
 
@@ -68,7 +68,7 @@ namespace platformer
 
                 if (!CheckFront(control))
                 {
-                    control.transform.Translate(Vector3.forward * Speed * SpeedGraph.Evaluate(stateInfo.normalizedTime) * Time.deltaTime);
+                    control.MoveFoward(Speed, SpeedGraph.Evaluate(stateInfo.normalizedTime));
                 }
             }
 
@@ -78,7 +78,7 @@ namespace platformer
 
                 if (!CheckFront(control))
                 {
-                    control.transform.Translate(Vector3.forward * Speed * SpeedGraph.Evaluate(stateInfo.normalizedTime) * Time.deltaTime);
+                    control.MoveFoward(Speed, SpeedGraph.Evaluate(stateInfo.normalizedTime));
                 }
             }
         }

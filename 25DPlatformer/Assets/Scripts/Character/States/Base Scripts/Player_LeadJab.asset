@@ -12,3 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3410c92204e268344a944d07bffbea2f, type: 3}
   m_Name: Player_LeadJab
   m_EditorClassIdentifier: 
+  StartAttackTime: 0.2
+  EndAttackTime: 0.3
+  ColliderNames:
+  - mixamorig:LeftHand
+  MustCollide: 1
+  MustFaceAttacker: 0
+  LethalRange: 0
+  MaxHits: 1
+  DeathAnimators: []

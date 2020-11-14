@@ -10,6 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 125c1f18e161da04c9d00762fb85dfd5, type: 3}
-  m_Name: Idle
+  m_Name: General_Idle
   m_EditorClassIdentifier: 
-  Duration: 0
