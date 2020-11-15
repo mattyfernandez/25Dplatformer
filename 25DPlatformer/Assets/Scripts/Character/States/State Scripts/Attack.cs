@@ -90,6 +90,12 @@ namespace platformer
                 }
             }
         }
+
+        public RuntimeAnimatorController GetDeathAnimator()
+        {
+            int index = Random.Range(0, DeathAnimators.Count);
+            return DeathAnimators[index];
+        }
     }
 
 }

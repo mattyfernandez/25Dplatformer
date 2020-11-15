@@ -40,6 +40,16 @@ namespace platformer
                     continue;
                 }
 
+                if(info.CurrentHits >= info.MaxHits)
+                {
+                    continue;
+                }
+
+                if(info.Attacker == control)
+                {
+                    continue;
+                }
+
                 if (info.MustCollide)
                 {
                     if (isCollided(info))
@@ -66,7 +76,9 @@ namespace platformer
         }
         private void TakeDamage(AttackInfo info)
         {
-            Debug.Log(info.Attacker.gameObject.name + "hits: " + this.gameObject.name );
+            Debug.Log(info.Attacker.gameObject.name + " hits: " + this.gameObject.name );
+            control.SkinnedMeshAnimator.runtimeAnimatorController = info.AttackAbility.GetDeathAnimator();
+            info.CurrentHits++;
         }
     }
 }
