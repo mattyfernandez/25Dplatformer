@@ -23,7 +23,7 @@ namespace platformer
             GameObject obj = Instantiate(Resources.Load("AttackInfo", typeof(GameObject))) as GameObject;
             AttackInfo info = obj.GetComponent<AttackInfo>();
 
-            info.ResetInfo(this);
+            info.ResetInfo(this, characterState.GetCharacterControl(animator));
 
             if (!AttackManager.Instance.CurrentsAttacks.Contains(info))
             {
@@ -49,7 +49,7 @@ namespace platformer
 
                     if(!info.IsRegisterd && info.AttackAbility == this)
                     {
-                        info.Register(this, characterState.GetCharacterControl(animator));
+                        info.Register(this);
                     }
                 }
             }

@@ -17,17 +17,17 @@ namespace platformer
         public bool IsRegisterd;
         public bool IsFinished;
 
-        public void ResetInfo(Attack attack)
+        public void ResetInfo(Attack attack, CharacterControl attacker)
         {
             IsRegisterd = false;
             IsFinished = false;
             AttackAbility = attack;
+            Attacker = attacker;
         }
 
-        public void Register(Attack attack, CharacterControl attacker)
+        public void Register(Attack attack)
         {
             IsRegisterd = true;
-            Attacker = attacker;
 
             AttackAbility = attack;
             ColliderNames = attack.ColliderNames;
