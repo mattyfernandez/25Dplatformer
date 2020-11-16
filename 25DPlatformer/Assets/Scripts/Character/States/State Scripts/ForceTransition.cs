@@ -26,7 +26,7 @@ namespace platformer
             animator.SetBool(TransitionParameter.ForceTransition.ToString(), false);
 
             //Attack Animation false... return Idle
-            animator.SetBool(TransitionParameter.Attack.ToString(), false);
+            //animator.SetBool(TransitionParameter.Attack.ToString(), false);
         }
     }
 
