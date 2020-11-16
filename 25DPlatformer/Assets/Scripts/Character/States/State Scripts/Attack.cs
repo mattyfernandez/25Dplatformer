@@ -16,12 +16,17 @@ namespace platformer
         public int MaxHits;
         public List<RuntimeAnimatorController> DeathAnimators = new List<RuntimeAnimatorController>();
 
+        private List<AttackInfo> FinishedAttacks = new List<AttackInfo>();
+
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
             animator.SetBool(TransitionParameter.Attack.ToString(), false);
 
-            GameObject obj = Instantiate(Resources.Load("AttackInfo", typeof(GameObject))) as GameObject;
+            //GameObject obj = Instantiate(Resources.Load("AttackInfo", typeof(GameObject))) as GameObject;
+            GameObject obj = PoolManager.Instance.GetObject(PoolObjectType.ATTACKINFO); //obj.GetComponent<AttackInfo>();
             AttackInfo info = obj.GetComponent<AttackInfo>();
+
+            obj.SetActive(true);
 
             info.ResetInfo(this, characterState.GetCharacterControl(animator));
 
@@ -69,7 +74,8 @@ namespace platformer
                     if (info.AttackAbility == this && !info.IsFinished)
                     {
                         info.IsFinished = true;
-                        Destroy(info.gameObject);
+                        info.GetComponent<PoolObject>().TurnOff();
+                        //Destroy(info.gameObject);
                     }
                 }
             }
@@ -82,11 +88,21 @@ namespace platformer
 
         public void ClearAttack()
         {
-            for (int i = 0; i < AttackManager.Instance.CurrentsAttacks.Count; i++)
+            FinishedAttacks.Clear();
+            
+            foreach(AttackInfo info in AttackManager.Instance.CurrentsAttacks)
             {
-                if(AttackManager.Instance.CurrentsAttacks[i] == null || AttackManager.Instance.CurrentsAttacks[i].IsFinished)
+                if (info == null || info.IsFinished)
                 {
-                    AttackManager.Instance.CurrentsAttacks.RemoveAt(i);
+                    FinishedAttacks.Add(info);
+                }
+            }
+
+            foreach (AttackInfo info in FinishedAttacks)
+            {
+                if (AttackManager.Instance.CurrentsAttacks.Contains(info))
+                {
+                    AttackManager.Instance.CurrentsAttacks.Remove(info);
                 }
             }
         }

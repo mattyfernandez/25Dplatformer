@@ -38,5 +38,10 @@ namespace platformer
             CurrentHits = 0;
         }
 
+        private void OnDisable()
+        {
+            IsFinished = true;
+        }
+
     }
 }
