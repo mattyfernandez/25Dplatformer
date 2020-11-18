@@ -82,6 +82,7 @@ namespace platformer
         }
         private void TakeDamage(AttackInfo info)
         {
+            CameraManager.Instance.ShakeCamera(0.25f);
             Debug.Log(info.Attacker.gameObject.name + " hits: " + this.gameObject.name );
             Debug.Log(this.gameObject.name + " hit " + DamagedPart.ToString());
 
