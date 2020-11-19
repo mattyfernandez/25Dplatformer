@@ -9,7 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76d2e4b0e9f8c5e42a75d76f1646dc6c, type: 3}
-  m_Name: Player_Uppercut_ForceTransition
+  m_Script: {fileID: 11500000, guid: 3410c92204e268344a944d07bffbea2f, type: 3}
+  m_Name: Player_Uppercut
   m_EditorClassIdentifier: 
-  TransitionTiming: 0.8
+  StartAttackTime: 0.2
+  EndAttackTime: 0.8
+  ColliderNames:
+  - RightHand
+  - RightForeArm
+  LaunchIntoAir: 1
+  MustCollide: 1
+  MustFaceAttacker: 0
+  LethalRange: 0
+  MaxHits: 1

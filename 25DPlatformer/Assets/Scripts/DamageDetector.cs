@@ -87,7 +87,7 @@ namespace platformer
             Debug.Log(this.gameObject.name + " hit " + DamagedPart.ToString());
 
             //control.SkinnedMeshAnimator.runtimeAnimatorController = info.AttackAbility.GetDeathAnimator();
-            control.SkinnedMeshAnimator.runtimeAnimatorController = DeathAnimationManager.Instance.GetAnimator(DamagedPart);
+            control.SkinnedMeshAnimator.runtimeAnimatorController = DeathAnimationManager.Instance.GetAnimator(DamagedPart, info);
             info.CurrentHits++;
 
             control.GetComponent<BoxCollider>().enabled = false;
@@ -95,3 +95,4 @@ namespace platformer
         }
     }
 }
+    

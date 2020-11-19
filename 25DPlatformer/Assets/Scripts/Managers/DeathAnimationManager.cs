@@ -21,7 +21,7 @@ namespace platformer
             }
         }
 
-        public RuntimeAnimatorController GetAnimator(GeneralBodyPart generalBodyPart)
+        public RuntimeAnimatorController GetAnimator(GeneralBodyPart generalBodyPart, AttackInfo info)
         {
             SetupDeathAnimationLoader();
 
@@ -29,12 +29,22 @@ namespace platformer
 
             foreach(DeathAnimationData data in deathAnimationLoader.DeathAnimationDataList)
             {
-                foreach(GeneralBodyPart part in data.GeneralBodyParts)
+                if (info.LaunchIntoAir)
                 {
-                    if(part == generalBodyPart)
+                   if (data.LaunchIntoAir)
                     {
                         Candidates.Add(data.Animator);
-                        break;
+                    }
+                }
+                else
+                {
+                    foreach(GeneralBodyPart part in data.GeneralBodyParts)
+                    {
+                        if(part == generalBodyPart)
+                        {
+                            Candidates.Add(data.Animator);
+                            break;
+                        }
                     }
                 }
             }

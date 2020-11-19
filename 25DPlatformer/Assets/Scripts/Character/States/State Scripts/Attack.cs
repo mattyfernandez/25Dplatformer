@@ -10,6 +10,7 @@ namespace platformer
         public float StartAttackTime;
         public float EndAttackTime;
         public List<string> ColliderNames = new List<string>();
+        public bool LaunchIntoAir;
         public bool MustCollide;
         public bool MustFaceAttacker;
         public float LethalRange;

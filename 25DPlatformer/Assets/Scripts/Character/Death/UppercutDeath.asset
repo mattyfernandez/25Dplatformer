@@ -9,7 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76d2e4b0e9f8c5e42a75d76f1646dc6c, type: 3}
-  m_Name: Player_Uppercut_ForceTransition
+  m_Script: {fileID: 11500000, guid: 80ca5fb77f57a1444a988934ea016000, type: 3}
+  m_Name: UppercutDeath
   m_EditorClassIdentifier: 
-  TransitionTiming: 0.8
+  GeneralBodyParts: 
+  Animator: {fileID: 9100000, guid: 9f7ac127fc1e0e248b805a0d86a27104, type: 2}
+  LaunchIntoAir: 1
+  IsFacingAttacker: 0
