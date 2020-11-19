@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3410c92204e268344a944d07bffbea2f, type: 3}
   m_Name: Player_Uppercut
   m_EditorClassIdentifier: 
-  StartAttackTime: 0.2
+  StartAttackTime: 0.15
   EndAttackTime: 0.8
   ColliderNames:
   - RightHand
